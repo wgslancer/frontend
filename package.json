@@ -6,7 +6,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "docker": "docker stop frontend || true && docker rm frontend || true && docker build . -t frontend:latest && docker run --name frontend -p 3000:3000 frontend"
+    "docker:image:delete":"docker stop frontend || true && docker rm frontend || true",
+    "docker:run":"docker run --name frontend -p 3000:3000 frontend",
+    "docker:run:origin":"docker run --name frontend -p 3000:3000 wgslancer/frontend:latest",
+    "docker:build": "yarn docker:image:delete && docker build . -t frontend:latest && yarn docker:run",
+    "docker:build:origin":"yarn docker:image:delete && docker pull wgslancer/frontend:latest && yarn docker:run:origin"
   },
   "dependencies": {
     "react": "^18.0.0",
