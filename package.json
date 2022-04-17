@@ -15,7 +15,8 @@
   "dependencies": {
     "gsap": "^3.10.3",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-query": "^3.34.20"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
