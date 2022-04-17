@@ -19,18 +19,24 @@ function App() {
   const { data, error, isLoading } = useQuery('book', fetchBook);
   const appRef = useRef(null);
   useEffect(() => {
-    gsap
-      .timeline()
-      .to(appRef.current, {
-        background: 'green',
-        rotate: '0deg',
-      })
-      .to(appRef.current, {
-        background: 'blue',
-        rotate: '360deg',
-      })
-      .repeat(10);
-  }, []);
+    if (isLoading) {
+      gsap
+        .timeline()
+        .to(appRef.current, {
+          background: 'green',
+          translateX: '-100px',
+        })
+        .to(appRef.current, {
+          background: 'blue',
+          translateX: '100px',
+        })
+        .to(appRef.current, {
+          background: 'red',
+          translateX: '0',
+        })
+        .repeat(10);
+    }
+  }, [isLoading]);
   return (
     <div className='App' ref={appRef}>
       {data
